@@ -1,7 +1,7 @@
 let token = "";
 
 async function register(){
-  await fetch("http://localhost:5000/auth/register",{
+  await fetch("https://cloud-notes-app-gtuo.onrender.com/auth/register",{
     method:"POST",
     headers:{"Content-Type":"application/json"},
     body: JSON.stringify({
@@ -13,7 +13,7 @@ async function register(){
 }
 
 async function login(){
-  const res = await fetch("http://localhost:5000/auth/login",{
+  const res = await fetch("https://cloud-notes-app-gtuo.onrender.com/auth/login",{
     method:"POST",
     headers:{"Content-Type":"application/json"},
     body: JSON.stringify({
@@ -33,7 +33,7 @@ async function addNote(){
   form.append("content", content.value);
   form.append("image", image.files[0]);
 
-  await fetch("http://localhost:5000/notes",{
+  await fetch("https://cloud-notes-app-gtuo.onrender.com/notes",{
     method:"POST",
     headers:{
       "Authorization": token
