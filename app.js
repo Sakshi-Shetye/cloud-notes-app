@@ -45,17 +45,27 @@ async function addNote(){
 }
 
 async function getNotes(){
-  const res = await fetch("http://localhost:5000/notes",{
+  notes.innerHTML = "<div class='loading'>Loading...</div>";
+
+  const res = await fetch("https://cloud-notes-app-gtuo.onrender.com/notes",{
     headers: { "Authorization": token }
   });
 
   const data = await res.json();
 
   notes.innerHTML = data.map(n =>
-    `<div>
+    `<div class="note">
       <h3>${n.title}</h3>
       <p>${n.content}</p>
-      <img src="${n.image}" width="150"/>
+      <img src="${n.image}" />
     </div>`
   ).join("");
 }
+  // notes.innerHTML = data.map(n =>
+  //   `<div>
+  //     <h3>${n.title}</h3>
+  //     <p>${n.content}</p>
+  //     <img src="${n.image}" width="150"/>
+  //   </div>`
+  // ).join("");
+
